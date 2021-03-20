@@ -1,0 +1,2 @@
+# kamibot
+A Discord bot. 
