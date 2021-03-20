@@ -17,7 +17,7 @@ client.on('message', message => {
 	//IF YOUR COMMAND HAS ARGUMENTS
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-	const args = message.content.slice(prefix.length).trim().split(' ');
+	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
 
 	console.log(message.content);
