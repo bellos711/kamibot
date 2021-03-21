@@ -2,7 +2,10 @@
 
 A Discord bot. 
 
-need a config.json file with your bot's token.
+-need a config.json file with your bot's token.
+-Also need to import discord.js
+-Linter used is eslint for the .eslintrc.json file
+
 
 {
     "prefix": "!",
