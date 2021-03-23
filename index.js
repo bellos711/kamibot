@@ -74,11 +74,28 @@ client.on('message', message => {
 
 	console.log(message.content);
 
+	
+	// if (!client.commands.has(commandName)) return;
+	// const command = client.commands.get(commandName);
 	//If there isn't a command with that name, exit early.
-	if (!client.commands.has(commandName)) return;
+	//The aliases property should always contain an array of strings. In your main file, here are the changes you'll need to make:
+	const command = client.commands.get(commandName)
+		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+	if (!command) return;
 
-	const command = client.commands.get(commandName);
+	//You can add a property to the necessary commands to determine whether or not it should be only available outside of servers.
+	if (command.guildOnly && message.channel.type === 'dm') {
+		return message.reply('I can\'t execute that command inside DMs!');
+	}
 
+	// We use TextChannel#permissionsFor in combination with Permissions#has rather than Guildmember#hasPermission to respect permission overwrites in our check.
+	if (command.permissions) {
+		const authorPerms = message.channel.permissionsFor(message.author);
+		if (!authorPerms || !authorPerms.has(command.permissions)) {
+			return message.reply(`You can not do this! Only those with ${command.permissions} permissions...`);
+		}
+	}
+	
 	//if command takes an argument, but no length so no argument provided
 	if (command.args && !args.length) {
 		let reply = `You didn't provide any arguments 🤔, ${message.author}!`;

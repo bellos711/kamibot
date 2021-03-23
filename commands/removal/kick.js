@@ -1,6 +1,8 @@
 module.exports = {
 	name: 'kick',
-	description: 'KICK!',
+	description: 'KICK SOMEONE!!',
+	guildOnly: true,
+	permissions: 'KICK_MEMBERS',
 	execute(message, args) {
 		if(!message.mentions.users.size){
 			return message.reply(`You'll need to mention somebody to try and kick 😒`)
