@@ -1,3 +1,4 @@
 #Includes your custom Discord bot token
 config.json
 node_modules/
+backup/
