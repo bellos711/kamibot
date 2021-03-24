@@ -44,6 +44,8 @@ client.once('ready', () => {
 
 client.on('message', message => {
 
+	
+
 	//IF YOUR COMMAND/MSG HAS NO ARGUMENTS
 	if (!message.content.startsWith(prefix) || message.author.bot){
 		// return;
@@ -53,9 +55,18 @@ client.on('message', message => {
 		if (reply.includes(`god`)){
 			return message.channel.send(`Did someone summon me?`);
 		} else if (reply === 'react-custom') {
-			const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === 'deadpanpig');
-			message.react(reactionEmoji);
-			message.react('😒');
+			// const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === 'deadpanpig');
+			// message.react(reactionEmoji);
+			try{
+				message.react('610818879790514217');
+				message.react('😒');
+			} catch (error) {
+				console.error(error);
+			}
+			
+		} else if (reply.includes('png') || reply.includes('jpg')) {
+			message.react('😮');
+			console.log('this just happened')
 		}
 
 		if (!client.replies.has(reply)) return; 
@@ -119,6 +130,8 @@ client.on('message', message => {
 		console.error(error);
 		message.reply('there was an error trying to execute that command!');
 	}
+
+	
 
 
 });
