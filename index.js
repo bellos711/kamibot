@@ -67,6 +67,7 @@ client.on('message', message => {
 		} else if (reply.includes('png') || reply.includes('jpg')) {
 			message.react('😮');
 			console.log('this just happened')
+			//react to images in url
 		}
 
 		if (!client.replies.has(reply)) return; 
