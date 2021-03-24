@@ -52,9 +52,10 @@ client.on('message', message => {
 		// message.channel.send(`you said ${reply}`);
 		if (reply.includes(`god`)){
 			return message.channel.send(`Did someone summon me?`);
-		} else if (reply === '!react-custom') {
-			const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === 'ayy');
+		} else if (reply === 'react-custom') {
+			const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === 'deadpanpig');
 			message.react(reactionEmoji);
+			message.react('😒');
 		}
 
 		if (!client.replies.has(reply)) return; 
